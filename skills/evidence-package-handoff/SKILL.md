@@ -1,8 +1,8 @@
 ---
 name: evidence-package-handoff
 description: >
-  Use this skill when you receive an evidence package produced by the
-  evidence-package-producer skill — someone else's investigation, hand off
+  Use this skill when you receive a local evidence package file or a share
+  link to a package produced by the evidence-package-producer skill — someone else's investigation, hand off
   to you (or to whoever is continuing the work) so they can pick up where
   it left off.
   The skill turns the raw evidence graph into a readable briefing: what's
@@ -31,6 +31,18 @@ without blindly trusting a diagnosis that might have gaps.
 This is not a pass/fail validation (that's a different job). The output
 here is a briefing a human can read in a couple of minutes, plus, later,
 an extension of the same evidence graph once new findings come in.
+
+## Resolve the package input
+
+For a local file, read its JSON. For a share link, retrieve the URL. If it is
+already a JSON package, use that response. If it is a publication page, find
+its `rel="alternate"` link with `type="application/json"` and retrieve that
+JSON. The evidence-package service may serve the JSON from a separate API
+origin. Use the downloaded JSON as the package;
+the HTML page and chat preview are only summaries. Record the source URL in
+the briefing so the reader can reopen the package. If the package cannot be
+retrieved or parsed, say what failed and ask for the JSON file or a working
+link before continuing.
 
 ## Step 1 — Produce a readable briefing
 
