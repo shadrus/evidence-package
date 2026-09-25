@@ -20,6 +20,36 @@ npx skills add shadrus/evidence-package --skill evidence-package-producer --skil
 
 The first command shows the skills the CLI discovers. The second installs both. To install one, pass only its `--skill` option.
 
+## Update
+
+After changes are pushed to this repository, people who already installed the skills can fetch the latest versions from their install location:
+
+```sh
+npx skills list
+npx skills update evidence-package-producer evidence-package-handoff
+```
+
+Add `-g` to `update` for a global installation. Updates are run by each user; pushing a commit does not change their installed copy automatically.
+
+## Remove
+
+```sh
+npx skills remove evidence-package-producer evidence-package-handoff
+```
+
+Pass only one name to remove one skill. Add `-g` for a global installation. Removing a skill from this repository does not remove existing installations.
+
+## Find
+
+Search the skills catalog by skill name and GitHub owner:
+
+```sh
+npx skills find evidence-package-producer --owner shadrus
+npx skills find evidence-package-handoff --owner shadrus
+```
+
+Catalog search depends on installation telemetry and may take time to show a new repository. `npx skills add shadrus/evidence-package --list` reads this repository directly and works independently of catalog indexing.
+
 ## Use
 
 Ask for a verifiable evidence package when starting an investigation. Give the resulting JSON package to `evidence-package-handoff` for a concise briefing or follow-up investigation. The handoff skill continues the original `e1`, `e2`, … node sequence when adding findings.
