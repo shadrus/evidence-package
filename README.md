@@ -2,11 +2,11 @@
 
 Three Agent Skills for investigations that need a traceable evidence record:
 
-| Skill | Purpose |
-| --- | --- |
+| Skill                       | Purpose                                                                                                  |
+| --------------------------- | -------------------------------------------------------------------------------------------------------- |
 | `evidence-package-producer` | Capture source results as evidence nodes during an investigation and assemble a verifiable JSON package. |
-| `evidence-package-handoff` | Turn that package into a short briefing and continue the same evidence graph as new findings arrive. |
-| `evidence-package-publish` | Publish a JSON package on explicit request and return a share link. |
+| `evidence-package-handoff`  | Turn that package into a short briefing and continue the same evidence graph as new findings arrive.     |
+| `evidence-package-publish`  | Publish a JSON package on explicit request and return a share link.                                      |
 
 Each skill has its own `SKILL.md` under [`skills/`](skills/). They can be installed together or separately.
 
@@ -56,10 +56,10 @@ Catalog search depends on installation telemetry and may take time to show a new
 
 Ask for a verifiable evidence package when starting an investigation. Give the resulting JSON package or its published share link to `evidence-package-handoff` for a concise briefing or follow-up investigation. The handoff skill continues the original `e1`, `e2`, … node sequence when adding findings.
 
-To publish, ask explicitly for a share link. Configure the publisher once in your own terminal using the API origin:
+To publish, ask explicitly for a share link. Configure the publisher once in your own terminal using the API origin of the public service instance:
 
 ```sh
-python3 skills/evidence-package-publish/scripts/publish.py configure --base-url https://YOUR-API-ORIGIN
+python3 skills/evidence-package-publish/scripts/publish.py configure --base-url https://api.aiproof.site360.tech
 ```
 
-The command prompts for an optional API key without echoing it and stores it locally with user-only file permissions. Leave the key blank for an anonymous link that expires after seven days. The service and account UI are being developed separately in Go; this repository does not host a public service yet.
+The command prompts for an optional API key without echoing it and stores it locally with user-only file permissions. Leave the key blank for an anonymous link that expires after seven days. The service runs at [aiproof.site360.tech](https://aiproof.site360.tech) (API at `api.aiproof.site360.tech`); account sign-in and keys are being developed separately.

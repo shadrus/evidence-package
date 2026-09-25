@@ -12,10 +12,11 @@ reported by the service. Each upload creates a new, independent publication.
 
 The helper reads its service URL and optional API key from a local config file.
 If it is not configured, tell the user to run this command with the API origin
-in their own terminal:
+in their own terminal — the public service instance is
+`https://api.aiproof.site360.tech`:
 
 ```sh
-python3 scripts/publish.py configure --base-url https://API-ORIGIN
+python3 scripts/publish.py configure --base-url https://api.aiproof.site360.tech
 ```
 
 The command asks for the API key with hidden input. Leaving it blank configures
